@@ -1,0 +1,66 @@
+﻿@model ManagerDB.Models.Carros
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carros</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Obs1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obs1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Obs2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obs2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Obs3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Obs3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

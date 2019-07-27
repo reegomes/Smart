@@ -1,0 +1,37 @@
+﻿1> Install-Package EntityFramework
+2> Adicionar esse campo em App.config//Web.Config
+
+  <connectionStrings>
+    <add name="Nome do banco" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;Initial Catalog=Nome do banco"
+         providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+  // Esse é para bancos internos da aplicação, por enquanto não vou usar nada interno, mas vou deixar aqui para o futuro
+    <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-ManagerDB-20190727024832.mdf;Initial Catalog=aspnet-ManagerDB-20190727024832;Integrated Security=True"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  //
+
+  3> Habilitar o Migrations 
+  > Enable-Migrations ou Enable-Migrations -ContextTypeName ManagerDB.Models.context
+
+
+  Adicionais
+            // Gerador do script de banco de dados
+            // > Update-Database -Script -SourceMigration:$InitialDatabase -TargetMigration:"Last Migration Here"
+
+            // Atualizador do banco de dados
+            // > Add-Migration "Add name of migration" 
+            // > Update-Database -Verbose
+
+            // Atualizador para rollback de update
+            // > Update-Database -TargetMigration:"add name of rollback migration" 
+
+            // Caso eu queira reverter um rollback
+            // > Update-Database -TargetMigration:"add name of migration" 
+
+
+
+Path Asp.Net = http://localhost:59638/
+Path API = http://localhost:56067/Api/
