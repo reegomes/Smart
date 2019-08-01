@@ -24,7 +24,5 @@ namespace Start.Models
             Marca = marca;
             Ano = ano;
         }
-
-
     }
 }
