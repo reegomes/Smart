@@ -5,14 +5,14 @@ namespace WebCep.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WebCep.Contexto>
+    internal sealed class Configuration : DbMigrationsConfiguration<WebCep.ContextDB>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(WebCep.Contexto context)
+        protected override void Seed(WebCep.ContextDB context)
         {
             //  This method will be called after migrating to the latest version.
 
