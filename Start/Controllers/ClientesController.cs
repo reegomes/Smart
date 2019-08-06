@@ -32,11 +32,11 @@ namespace Start.Controllers
         }
 
         /* http://localhost:56067/Api/Clientes?nome=joao&modelo=vectra&marca=gm&ano=1998 */
-        public void Post(string nome, string marca, string modelo, string ano, string idade, string genero)
+        public void Post(string cpf, string idcotacao, string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
         {
             if (!string.IsNullOrEmpty(nome))
             {
-                clientes.Add(new Cliente(nome, modelo, marca, ano, idade, genero));
+                clientes.Add(new Cliente(cpf, idcotacao, nome, idade, genero, marca, modelo, anoFabricacao, anoModelo));
             }
         }
 
