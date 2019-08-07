@@ -10,17 +10,20 @@ namespace Start.Controllers
     public class ClientesController : ApiController
     {
         private static List<Cliente> clientes = new List<Cliente>();
+        private static List<Cotacao> cotacoes = new List<Cotacao>();
+
 
         //public ManagerDB.Models.Carros Db { get; set; }
 
 
         // Consulta
         /* http://localhost:56067/Api/Clientes */
-        public List<Cliente> Get()
+        public List<Cotacao> Get()
         {
-            return clientes;
+            return cotacoes;
         }
 
+        
 
         // inserção de dados
         public void Post(string nome)
@@ -32,11 +35,12 @@ namespace Start.Controllers
         }
 
         /* http://localhost:56067/Api/Clientes?nome=joao&modelo=vectra&marca=gm&ano=1998 */
-        public void Post(string cpf, string idcotacao, string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
+        public void Post(string cpf, string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
         {
             if (!string.IsNullOrEmpty(nome))
             {
-                clientes.Add(new Cliente(cpf, idcotacao, nome, idade, genero, marca, modelo, anoFabricacao, anoModelo));
+                clientes.Add(new Cliente(cpf, nome));
+                cotacoes.Add(new Cotacao(nome,idade,genero,marca,modelo,anoFabricacao,anoModelo));
             }
         }
 
