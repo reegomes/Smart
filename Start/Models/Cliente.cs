@@ -18,8 +18,9 @@ namespace Start.Models
             this.Nome = nome;
         }
 
-        public Cliente(string cpf, string nome ) : this(nome)
+        public Cliente(Cotacao cotacao, string cpf, string nome ) : this(nome)
         {
+            //Cotacao.Add(cotacao);
             CPF = cpf;
             Nome = nome;
            
@@ -45,7 +46,7 @@ namespace Start.Models
 
         public Cotacao(string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo) : this(nome)
         {
-            
+            //Cliente = cliente;
             Nome = nome;
             Idade = idade;
             Genero = genero;
