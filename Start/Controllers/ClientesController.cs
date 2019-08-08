@@ -18,9 +18,9 @@ namespace Start.Controllers
 
         // Consulta
         /* http://localhost:56067/Api/Clientes */
-        public List<Cliente> Get()
+        public List<Cotacao> Get()
         {
-            return clientes;
+            return cotacoes;
         }
 
         
@@ -39,11 +39,11 @@ namespace Start.Controllers
         {
             if (!string.IsNullOrEmpty(nome))
             {
-                //Cliente prov = new Cliente(cpf, nome);
-                //cotacoes.Add(new Cotacao(prov, nome,idade,genero,marca,modelo,anoFabricacao,anoModelo));
+                Cliente prov = new Cliente(cpf, nome);
+                cotacoes.Add(new Cotacao(prov, nome,idade,genero,marca,modelo,anoFabricacao,anoModelo));
 
-                Cotacao prov = new Cotacao(nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
-                clientes.Add(new Cliente(prov, cpf, nome));
+                //Cotacao prov = new Cotacao(nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
+                //clientes.Add(new Cliente(prov, cpf, nome));
             }
         }
 

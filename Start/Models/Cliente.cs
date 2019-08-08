@@ -13,7 +13,7 @@ namespace Start.Models
         public int Id { get; set; }
         public string CPF { get; set; } 
         public string Nome { get; set; }
-        public ICollection<Cotacao> Cotacao { get; set; }
+        //public ICollection<Cotacao> Cotacao { get; set; }
         
 
 
@@ -22,7 +22,7 @@ namespace Start.Models
             this.Nome = nome;
         }
 
-        public Cliente(Cotacao cotacao, string cpf, string nome ) : this(nome)
+        public Cliente(string cpf, string nome ) : this(nome)
         {
             //Cotacao.Add(cotacao);
             CPF = cpf;
@@ -50,9 +50,9 @@ namespace Start.Models
             this.Nome = nome;
         }
 
-        public Cotacao(string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo) : this(nome)
+        public Cotacao(Cliente cliente, string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo) : this(nome)
         {
-            //Cliente = cliente;
+            Cliente = cliente;
             Nome = nome;
             Idade = idade;
             Genero = genero;
