@@ -1,6 +1,8 @@
 ﻿using RestSharp;
 using RestSharp.Serialization.Json;
 using System.Web.Http;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Start.Controllers
 {
@@ -97,6 +99,7 @@ namespace Start.Controllers
     }
     public class Retorno
     {
+        [Key]
         public int Id { get; set; }
         public string Key { get; set; }
         public string Name { get; set; }
