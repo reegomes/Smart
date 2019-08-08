@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Start.Models
 {
     public class Cliente
     {
+        [Key]
+        public int Id { get; set; }
         public string CPF { get; set; } 
         public string Nome { get; set; }
         public ICollection<Cotacao> Cotacao { get; set; }
@@ -30,6 +34,8 @@ namespace Start.Models
 
     public class Cotacao
     {
+        [Key]
+        public int Id { get; set; }
         public Cliente Cliente { get; set; }
         public string Nome { get; set; }
         public string Idade { get; set; }

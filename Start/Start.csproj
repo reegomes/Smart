@@ -99,6 +99,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Library\ContextDB.cs" />
+    <Compile Include="Migrations\201908081820355_DataMigration.cs" />
+    <Compile Include="Migrations\201908081820355_DataMigration.Designer.cs">
+      <DependentUpon>201908081820355_DataMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -119,6 +125,14 @@
       <Project>{f2784283-0600-4f4c-a9c0-af4f4e0f1818}</Project>
       <Name>ManagerDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908081820355_DataMigration.resx">
+      <DependentUpon>201908081820355_DataMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
