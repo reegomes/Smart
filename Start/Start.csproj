@@ -104,8 +104,13 @@
     <Compile Include="Migrations\201908081820355_DataMigration.Designer.cs">
       <DependentUpon>201908081820355_DataMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908082226407_CotacoesMigration.cs" />
+    <Compile Include="Migrations\201908082226407_CotacoesMigration.Designer.cs">
+      <DependentUpon>201908082226407_CotacoesMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Cotacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201908081820355_DataMigration.resx">
       <DependentUpon>201908081820355_DataMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908082226407_CotacoesMigration.resx">
+      <DependentUpon>201908082226407_CotacoesMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

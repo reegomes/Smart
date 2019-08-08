@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using Start.Library;
 
 namespace Start.Controllers
 {
@@ -39,11 +40,22 @@ namespace Start.Controllers
         {
             if (!string.IsNullOrEmpty(nome))
             {
-                Cliente prov = new Cliente(cpf, nome);
-                cotacoes.Add(new Cotacao(prov, nome,idade,genero,marca,modelo,anoFabricacao,anoModelo));
+                //Cliente prov = new Cliente(cpf, nome); ?
+                //cotacoes.Add(new Cotacao(prov, nome,idade,genero,marca,modelo,anoFabricacao,anoModelo)); ?
 
                 //Cotacao prov = new Cotacao(nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
                 //clientes.Add(new Cliente(prov, cpf, nome));
+
+                using (var ctx = new ContextDB())
+                {
+                    Cliente cliente = new Cliente(cpf, nome);
+                    Cotacao cotacao = new Cotacao(cliente, nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
+
+                    ctx.Clientes.Add(cliente);
+                    ctx.Cotacoes.Add(cotacao);
+                    
+                    ctx.SaveChanges();
+                }
             }
         }
 
