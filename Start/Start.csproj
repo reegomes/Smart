@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201908082226407_CotacoesMigration.Designer.cs">
       <DependentUpon>201908082226407_CotacoesMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908090144016_NewMigration.cs" />
+    <Compile Include="Migrations\201908090144016_NewMigration.Designer.cs">
+      <DependentUpon>201908090144016_NewMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cotacao.cs" />
@@ -140,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908082226407_CotacoesMigration.resx">
       <DependentUpon>201908082226407_CotacoesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908090144016_NewMigration.resx">
+      <DependentUpon>201908090144016_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,7 +15,7 @@ namespace Start.Library
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            ; // base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
