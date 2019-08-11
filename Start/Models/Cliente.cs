@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Start.Models
@@ -6,23 +7,34 @@ namespace Start.Models
     public class Cliente
     {
         [Key]
-        public int Id { get; set; }
-        public string CPF { get; set; }
+        public int ID { get; set; }
+        public double CPF { get; set; }
         public string Nome { get; set; }
-        //public ICollection<Cotacao> Cotacao { get; set; }
+
+        //public Cotacao Cotacao { get; set; }
+        public ICollection<Cotacao> Cotacoes { get; set; }
+        //public virtual IEnumerable<Cotacao> Cotacoes { get; set; }
 
 
-
-        public Cliente(string nome)
+        public Cliente(double cpf, string nome, ICollection<Cotacao> cotacao)
         {
-            this.Nome = nome;
+            CPF = cpf;
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            Cotacoes = cotacao ?? throw new ArgumentNullException(nameof(cotacao));
         }
 
-        public Cliente(string cpf, string nome) : this(nome)
+        public Cliente(double cpf, string nome)
         {
-            //Cotacao.Add(cotacao);
             CPF = cpf;
-            Nome = nome;
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+        }
+
+        public Cliente(int iD, double cPF, string nome, ICollection<Cotacao> cotacoes)
+        {
+            ID = iD;
+            CPF = cPF;
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            Cotacoes = cotacoes ?? throw new ArgumentNullException(nameof(cotacoes));
         }
     }
 }

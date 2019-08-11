@@ -100,18 +100,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\ContextDB.cs" />
-    <Compile Include="Migrations\201908081820355_DataMigration.cs" />
-    <Compile Include="Migrations\201908081820355_DataMigration.Designer.cs">
-      <DependentUpon>201908081820355_DataMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908082226407_CotacoesMigration.cs" />
-    <Compile Include="Migrations\201908082226407_CotacoesMigration.Designer.cs">
-      <DependentUpon>201908082226407_CotacoesMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201908090144016_NewMigration.cs" />
-    <Compile Include="Migrations\201908090144016_NewMigration.Designer.cs">
-      <DependentUpon>201908090144016_NewMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cotacao.cs" />
@@ -119,6 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\SmartInsure - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -137,17 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201908081820355_DataMigration.resx">
-      <DependentUpon>201908081820355_DataMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908082226407_CotacoesMigration.resx">
-      <DependentUpon>201908082226407_CotacoesMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908090144016_NewMigration.resx">
-      <DependentUpon>201908090144016_NewMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

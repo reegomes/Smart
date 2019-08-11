@@ -1,10 +1,9 @@
-﻿using Start.Models;
+﻿using Start.Library;
+using Start.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
-using Start.Library;
+using System.Linq;
+using System;
 
 namespace Start.Controllers
 {
@@ -13,58 +12,50 @@ namespace Start.Controllers
         private static List<Cliente> clientes = new List<Cliente>();
         private static List<Cotacao> cotacoes = new List<Cotacao>();
 
-
-        //public ManagerDB.Models.Carros Db { get; set; }
+        public ContextDB Banco { get; set; }
 
 
         // Consulta
         /* http://localhost:56067/Api/Clientes */
-        public List<Cotacao> Get()
+
+        public ICollection<Cliente> ListarClientes()
         {
-            return cotacoes;
+            return null;
         }
 
-        
-
-        // inserção de dados
-        public void Post(string nome)
-        {
-            if (!string.IsNullOrEmpty(nome))
-            {
-                clientes.Add(new Cliente(nome));
-            }
-        }
 
         /* http://localhost:56067/Api/Clientes?nome=joao&modelo=vectra&marca=gm&ano=1998 */
         public void Post(string cpf, string nome, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
         {
-            if (!string.IsNullOrEmpty(nome))
+            if (!string.IsNullOrEmpty(cpf))
             {
-                //Cliente prov = new Cliente(cpf, nome); ?
-                //cotacoes.Add(new Cotacao(prov, nome,idade,genero,marca,modelo,anoFabricacao,anoModelo)); ?
-
-                //Cotacao prov = new Cotacao(nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
-                //clientes.Add(new Cliente(prov, cpf, nome));
-
                 using (var ctx = new ContextDB())
                 {
-                    Cliente cliente = new Cliente(cpf, nome);
-                    Cotacao cotacao = new Cotacao(cliente, nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
+                    //ListaDeCotacoes listaDeCotacoes = new ListaDeCotacoes();
 
-                    ctx.Clientes.Add(cliente);
-                    ctx.Cotacoes.Add(cotacao);
-                    
-                    ctx.SaveChanges();
+                    //Cotacao addCotacao = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
+                    //listaDeCotacoes.Salvar(cliente, cotacao);
+
+
+                    Cliente cliente = new Cliente(double.Parse(cpf), nome);
+                    Cotacao cotacao = new Cotacao(cliente, idade, genero, marca, modelo, anoFabricacao, anoModelo);
+                    Cotacao cotacaoAdd = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
+
+                    Cliente user = ctx.Clientes.Create();
+                    Cotacao cota = ctx.Cotacoes.Create();
+
+
+                        ctx.Clientes.Add(cliente);
+                        ctx.Cotacoes.Add(cotacao);
+                        ctx.SaveChanges();
                 }
             }
         }
 
-
-
         // deletar dados
         public void Delete(string nome)
         {
-            clientes.RemoveAt(clientes.IndexOf(clientes.First(x => x.Nome.Equals(nome))));
+            //clientes.RemoveAt(clientes.IndexOf(clientes.First(x => x.Nome.Equals(nome))));
         }
     }
 }
