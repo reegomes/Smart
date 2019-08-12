@@ -40,7 +40,7 @@ namespace Start.Controllers
             if (!string.IsNullOrEmpty(nome))
             {
                 Cliente prov = new Cliente(cpf, nome);
-                cotacoes.Add(new Cotacao(prov, nome,idade,genero,marca,modelo,anoFabricacao,anoModelo));
+                cotacoes.Add(new Cotacao(nome,idade,genero,marca,modelo,anoFabricacao,anoModelo, prov, prov.Id));
 
                 //Cotacao prov = new Cotacao(nome, idade, genero, marca, modelo, anoFabricacao, anoModelo);
                 //clientes.Add(new Cliente(prov, cpf, nome));
