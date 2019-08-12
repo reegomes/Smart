@@ -1,13 +1,21 @@
 ﻿using RestSharp;
 using RestSharp.Serialization.Json;
 using System.Web.Http;
-using System.Data.Entity;
-using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace Start.Controllers
 {
     public class CotacaoController : ApiController
     {
+        private const float plano1 = 589.70f;
+        private const float plano2 = 657.74f;
+        private const float plano3 = 940.79f;
+        private const float plano4 = 1059.36f;
+        private const float plano5 = 1160.16f;
+        private const float plano6 = 1298.42f;
+        private const float plano7 = 1440.73f;
+        private const float plano8 = 1612.37f;
+        private const float plano9 = 1805.72f;
 
         [HttpGet]
         public int GetSoma(int c, int d) => c + d;
@@ -26,24 +34,21 @@ namespace Start.Controllers
             //string fipeRetorno = string.Format("ID: {0}, Key: {1}, Fipe_Name: {2}, Name: {3}, Order: {4}, Preço: {5}", dadosRetorno.Id, dadosRetorno.Key, dadosRetorno.Fipe_Name, dadosRetorno.Name, dadosRetorno.Order, dadosRetorno.Preco);
 
             string fipeValor = dadosRetorno.Preco.Remove(0, 3);
-            
-            return "Valor do plano: " + TabelaDeValores(float.Parse(fipeValor)).ToString();
+
+            return "Valor do plano - R$: " + GetMensalidade(ConverteNum(fipeValor));
         }
 
-        private const float plano1 = 589.70f;
-        private const float plano2 = 657.74f;
-        private const float plano3 = 940.79f;
-        private const float plano4 = 1059.36f;
-        private const float plano5 = 1160.16f;
-        private const float plano6 = 1298.42f;
-        private const float plano7 = 1440.73f;
-        private const float plano8 = 1612.37f;
-        private const float plano9 = 1805.72f;
+        public string ConverteNum(string str)
+        {
+            var apenasDigitos = new Regex(@"[^\d]");
+            return apenasDigitos.Replace(str, "");
+        }
 
-        private float TabelaDeValores(float valor)
+        [HttpGet]
+        public string GetMensalidade(string fipeValor)
         {
             float resultValor = 0;
-
+            float valor = float.Parse(fipeValor)/100;
             if (valor <= 10000)
                 resultValor = plano1;
             else if (valor >= 10001 && valor <= 20000)
@@ -65,41 +70,12 @@ namespace Start.Controllers
             else if (valor >= 90001)
                 resultValor = 0;
 
-            return resultValor;
+            return resultValor.ToString();
         }
-
-        /*
-        // GET: api/Cotacao
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Cotacao/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/Cotacao
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Cotacao/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Cotacao/5
-        public void Delete(int id)
-        {
-        }
-        */
     }
+
     public class Retorno
     {
-        [Key]
         public int Id { get; set; }
         public string Key { get; set; }
         public string Name { get; set; }

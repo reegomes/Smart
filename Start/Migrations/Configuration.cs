@@ -9,7 +9,7 @@ namespace Start.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Start.Library.ContextDB context)
