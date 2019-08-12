@@ -31,18 +31,13 @@ namespace Start.Controllers
             {
                 using (var ctx = new ContextDB())
                 {
-                    //ListaDeCotacoes listaDeCotacoes = new ListaDeCotacoes();
+                 
+                    Cliente cliente = new Cliente(cpf, nome);
+                    Cotacao cotacao = new Cotacao(cliente, cliente.ID, idade, genero, marca, modelo, anoFabricacao, anoModelo);
+                    //Cotacao cotacaoAdd = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
 
-                    //Cotacao addCotacao = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
-                    //listaDeCotacoes.Salvar(cliente, cotacao);
-
-
-                    Cliente cliente = new Cliente(double.Parse(cpf), nome);
-                    Cotacao cotacao = new Cotacao(cliente, idade, genero, marca, modelo, anoFabricacao, anoModelo);
-                    Cotacao cotacaoAdd = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
-
-                    Cliente user = ctx.Clientes.Create();
-                    Cotacao cota = ctx.Cotacoes.Create();
+                    //Cliente user = ctx.Clientes.Create();
+                    //Cotacao cota = ctx.Cotacoes.Create();
 
 
                         ctx.Clientes.Add(cliente);

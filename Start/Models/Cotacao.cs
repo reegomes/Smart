@@ -8,9 +8,11 @@ namespace Start.Models
     {   
         [Key]
         public int ID { get; set; }
-        public double ClienteId { get; set; }
-        [ForeignKey("ClienteId")]
+        //public double ClienteId { get; set; }
+        
         public virtual Cliente Cliente { get; set; }
+        public int ClienteID { get; set; }
+        //[ForeignKey("ClienteID")]
         public string Idade { get; set; }
         public string Genero { get; set; }
         public string Marca { get; set; }
@@ -19,9 +21,10 @@ namespace Start.Models
         public string AnoModelo { get; set; }
 
         
-        public Cotacao(Cliente cliente, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
+        public Cotacao(Cliente cliente, int clienteID, string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
         {
             Cliente = cliente;
+            ClienteID = clienteID;
             Idade = idade;
             Genero = genero;
             Marca = marca;
