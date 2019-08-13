@@ -5,10 +5,6 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Start", "Start\Start.csproj", "{60E7982D-E72A-4358-954F-392E3AFE674C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerDB", "ManagerDB\ManagerDB.csproj", "{F2784283-0600-4F4C-A9C0-AF4F4E0F1818}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCep", "WebCep\WebCep.csproj", "{344CE2B0-1926-4307-A078-7ED62DE0CA9D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{60E7982D-E72A-4358-954F-392E3AFE674C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60E7982D-E72A-4358-954F-392E3AFE674C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60E7982D-E72A-4358-954F-392E3AFE674C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2784283-0600-4F4C-A9C0-AF4F4E0F1818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2784283-0600-4F4C-A9C0-AF4F4E0F1818}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2784283-0600-4F4C-A9C0-AF4F4E0F1818}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2784283-0600-4F4C-A9C0-AF4F4E0F1818}.Release|Any CPU.Build.0 = Release|Any CPU
-		{344CE2B0-1926-4307-A078-7ED62DE0CA9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{344CE2B0-1926-4307-A078-7ED62DE0CA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{344CE2B0-1926-4307-A078-7ED62DE0CA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{344CE2B0-1926-4307-A078-7ED62DE0CA9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

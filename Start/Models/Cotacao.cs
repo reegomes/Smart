@@ -32,7 +32,6 @@ namespace Start.Models
             Modelo = modelo;
             AnoFabricacao = anoFabricacao;
             AnoModelo = anoModelo;
-
         }
 
         public Cotacao(string idade, string genero, string marca, string modelo, string anoFabricacao, string anoModelo)
