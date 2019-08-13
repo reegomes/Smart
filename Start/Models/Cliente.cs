@@ -6,10 +6,18 @@ namespace Start.Models
 {
     public class Cliente
     {
-        [Key]
-        public int ID { get; set; }
+        [Key()]
+        public int Id { get; set; }
         public string CPF { get; set; }
         public string Nome { get; set; }
+        public virtual ICollection<Cotacao> Cotacao { get; set; }
+
+        public Cliente(string cpf, string nome, ICollection<Cotacao> cotacao)
+        {
+            CPF = cpf;
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            Cotacao = cotacao ?? throw new ArgumentNullException(nameof(cotacao));
+        }
 
         public Cliente(string cpf, string nome)
         {
@@ -17,5 +25,8 @@ namespace Start.Models
             Nome = nome ?? throw new ArgumentNullException(nameof(nome));
         }
 
+        public Cliente()
+        {
+        }
     }
 }

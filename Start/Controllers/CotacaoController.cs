@@ -23,6 +23,7 @@ namespace Start.Controllers
         [HttpGet]
         public string GetFipe(string tipo, string acao, string modelo)
         {
+            // Exemplo Base
             /* http://fipeapi.appspot.com/api/1/carros/veiculo/21/4828/2013-1.json */
 
             var restClient = new RestClient(string.Format("http://fipeapi.appspot.com/api/1/carros/veiculo/{0}/{1}/{2}.json", tipo, acao, modelo));
@@ -30,8 +31,6 @@ namespace Start.Controllers
 
             IRestResponse restResponse = restClient.Execute(restRequest);
             Retorno dadosRetorno = new JsonDeserializer().Deserialize<Retorno>(restResponse);
-
-            //string fipeRetorno = string.Format("ID: {0}, Key: {1}, Fipe_Name: {2}, Name: {3}, Order: {4}, Preço: {5}", dadosRetorno.Id, dadosRetorno.Key, dadosRetorno.Fipe_Name, dadosRetorno.Name, dadosRetorno.Order, dadosRetorno.Preco);
 
             string fipeValor = dadosRetorno.Preco.Remove(0, 3);
 

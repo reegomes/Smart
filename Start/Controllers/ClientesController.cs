@@ -1,26 +1,26 @@
 ﻿using Start.Library;
 using Start.Models;
-using System.Collections.Generic;
-using System.Web.Http;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 
 namespace Start.Controllers
 {
     public class ClientesController : ApiController
     {
         private static List<Cliente> clientes = new List<Cliente>();
-        private static List<Cotacao> cotacoes = new List<Cotacao>();
+        private static readonly List<Cotacao> cotacoes = new List<Cotacao>();
 
         public ContextDB Banco { get; set; }
 
 
         // Consulta
         /* http://localhost:56067/Api/Clientes */
-
+        [HttpGet]
         public ICollection<Cliente> ListarClientes()
         {
-            return null;
+            return clientes.ToList();
         }
 
 
@@ -31,18 +31,25 @@ namespace Start.Controllers
             {
                 using (var ctx = new ContextDB())
                 {
-                 
                     Cliente cliente = new Cliente(cpf, nome);
-                    Cotacao cotacao = new Cotacao(cliente, cliente.ID, idade, genero, marca, modelo, anoFabricacao, anoModelo);
-                    //Cotacao cotacaoAdd = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
-
-                    //Cliente user = ctx.Clientes.Create();
-                    //Cotacao cota = ctx.Cotacoes.Create();
-
-
+                    Cotacao cotacao = new Cotacao(idade, genero, marca, modelo, anoFabricacao, anoModelo);
+                    try
+                    {
+                        var BuscaCPF = ctx.Clientes.Where(c => c.CPF == cliente.CPF).FirstOrDefault();
+                        if (cliente.CPF == BuscaCPF.CPF)
+                        {
+                            cotacao.ClienteId = BuscaCPF.Id;
+                            ctx.Cotacoes.Add(cotacao);
+                            ctx.SaveChanges();
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
                         ctx.Clientes.Add(cliente);
                         ctx.Cotacoes.Add(cotacao);
                         ctx.SaveChanges();
+                        return;
+                    }
                 }
             }
         }

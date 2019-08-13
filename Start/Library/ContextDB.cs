@@ -10,12 +10,13 @@ namespace Start.Library
 
         public ContextDB() : base("name=ContextDB")
         {
-            this.Configuration.LazyLoadingEnabled = true;
         }
-        protected override void OnModelCreating(DbModelBuilder mb)
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            mb.Entity<Cliente>().HasKey(c => c.CPF);
-            mb.Entity<Cotacao>().HasKey(t => t.ID);
+            modelBuilder.Entity<Cotacao>().HasRequired(c => c.Cliente).WithMany(c => c.Cotacao);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
