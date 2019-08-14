@@ -92,8 +92,6 @@ namespace Start.Controllers
             return apenasDigitos.Replace(str, "");
         }
 
-
-
         [HttpGet]
         public List<Produto> GetMensalidade(string fipeValor)
         {
@@ -316,22 +314,22 @@ namespace Start.Controllers
         }
 
         [HttpGet]
-        public double ValorRCF(int valorEscolhido)
+        public double ValoresAdcionais(int valorEscolhido, string tipo)
         {
-
-            return GetRCF(valorEscolhido);
-
+            if (tipo == "rcf")
+                return GetRCF(valorEscolhido);
+            else if (tipo == "app")
+                return GetAPP(valorEscolhido);
+            else
+                return 0;
+            
         }
 
-        [HttpGet]
-        public double ValorAPP(int valorEscolhido)
-        {
-
-            return GetAPP(valorEscolhido);
-
-        }
-
-
+        //[HttpPost]
+        //public string salvar(CotacaoCompleta cot)
+        //{
+            
+        //}
 
         private double GetAPP(int valorEscolhido)
         {
@@ -421,7 +419,6 @@ namespace Start.Controllers
 
             return Oferta;
         }
-
 
     }
 
