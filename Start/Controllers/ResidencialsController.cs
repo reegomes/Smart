@@ -37,6 +37,13 @@ namespace Start.Controllers
             return Ok(residencial);
         }
 
+        //
+
+            
+
+
+        //
+
         // PUT: api/Residencials/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutResidencial(int id, Residencial residencial)
