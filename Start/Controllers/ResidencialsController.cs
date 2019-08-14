@@ -18,6 +18,18 @@ namespace Start.Controllers
     {
         private ContextDB db = new ContextDB();
 
+        private const float oferta1casa = 216.15f;
+        private const float oferta1ap = 172.92f;
+        private const float oferta2casa = 272.35f;
+        private const float oferta2ap = 217.88f;
+        private const float oferta3casa = 343.16f;
+        private const float oferta3ap = 274.53f;
+        private const float oferta4casa = 432.39f;
+        private const float oferta4ap = 345.91f;
+        private const float oferta5casa = 544.81f;
+        private const float oferta5ap = 435.84f;
+
+
         // GET: api/Residencials
         public IQueryable<Residencial> GetResidencials()
         {
@@ -38,9 +50,36 @@ namespace Start.Controllers
         }
 
         //
+        public string Get(string tipo, int plano)
+        {
+            if (tipo == "casa")
+            {
+                if (plano == 1) { return mensalidade(oferta1casa).ToString(); }
+                if (plano == 2) { return mensalidade(oferta2casa).ToString(); }
+                if (plano == 3) { return mensalidade(oferta3casa).ToString(); }
+                if (plano == 4) { return mensalidade(oferta4casa).ToString(); }
+                if (plano == 5) { return mensalidade(oferta5casa).ToString(); }
+            }
+            else if (tipo == "apartamento")
+            {
+                if (plano == 1) { return mensalidade(oferta1ap).ToString(); }
+                if (plano == 2) { return mensalidade(oferta2ap).ToString(); }
+                if (plano == 3) { return mensalidade(oferta3ap).ToString(); }
+                if (plano == 4) { return mensalidade(oferta4ap).ToString(); }
+                if (plano == 5) { return mensalidade(oferta5ap).ToString(); }
+            }
+            else
+            {
+                return "Error";
+            }
 
-            
+            return null;
+        }
 
+        public float mensalidade(float oferta)
+        {
+            return oferta / 12;
+        }
 
         //
 
