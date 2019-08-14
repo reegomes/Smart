@@ -102,7 +102,9 @@
     <Compile Include="Library\ContextDB.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Cobertura.cs" />
     <Compile Include="Models\Cotacao.cs" />
+    <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,12 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ManagerDB\ManagerDB.csproj">
-      <Project>{f2784283-0600-4f4c-a9c0-af4f4e0f1818}</Project>
-      <Name>ManagerDB</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

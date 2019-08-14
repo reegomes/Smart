@@ -2,11 +2,15 @@
 using RestSharp.Serialization.Json;
 using System.Web.Http;
 using System.Text.RegularExpressions;
+using Start.Models;
+using System.Collections.Generic;
+using System;
 
 namespace Start.Controllers
 {
     public class CotacaoController : ApiController
     {
+        #region Planos 
         private const float plano1 = 589.70f;
         private const float plano2 = 657.74f;
         private const float plano3 = 940.79f;
@@ -17,11 +21,56 @@ namespace Start.Controllers
         private const float plano8 = 1612.37f;
         private const float plano9 = 1805.72f;
 
+
+
+        private const float planoB1 = 342.03f;
+        private const float planoB2 = 381.49f;
+        private const float planoB3 = 545.66f;
+        private const float planoB4 = 614.43f;
+        private const float planoB5 = 672.89f;
+        private const float planoB6 = 753.09f;
+        private const float planoB7 = 835.62f;
+        private const float planoB8 = 935.17f;
+        private const float planoB9 = 1047.32f;
+
+
+        private const float planoC1 = 401.00f;
+        private const float planoC2 = 447.27f;
+        private const float planoC3 = 639.74f;
+        private const float planoC4 = 720.36f;
+        private const float planoC5 = 788.91f;
+        private const float planoC6 = 882.93f;
+        private const float planoC7 = 979.70f;
+        private const float planoC8 = 1096.41f;
+        private const float planoC9 = 1227.89f;
+
+        #endregion
+
+
+        #region Cobeturas
+        private static Cobertura Compreensivo = new Cobertura
+        {
+            nome = "Compreensivo",
+            id = 1
+        };
+        private static Cobertura RouboEFurto = new Cobertura
+        {
+            nome = "Roubo e Furto",
+            id = 2
+        };
+        private static Cobertura PT = new Cobertura
+        {
+            nome = "PT Colisão e Roubo e Furto",
+            id = 3
+        };
+
+        #endregion
+
         [HttpGet]
         public int GetSoma(int c, int d) => c + d;
 
         [HttpGet]
-        public string GetFipe(string tipo, string acao, string modelo)
+        public List<Produto> GetFipe(string tipo, string acao, string modelo)
         {
             // Exemplo Base
             /* http://fipeapi.appspot.com/api/1/carros/veiculo/21/4828/2013-1.json */
@@ -34,7 +83,7 @@ namespace Start.Controllers
 
             string fipeValor = dadosRetorno.Preco.Remove(0, 3);
 
-            return "Valor do plano - R$: " + GetMensalidade(ConverteNum(fipeValor));
+            return GetMensalidade(ConverteNum(fipeValor));
         }
 
         public string ConverteNum(string str)
@@ -43,34 +92,337 @@ namespace Start.Controllers
             return apenasDigitos.Replace(str, "");
         }
 
-        [HttpGet]
-        public string GetMensalidade(string fipeValor)
-        {
-            float resultValor = 0;
-            float valor = float.Parse(fipeValor)/100;
-            if (valor <= 10000)
-                resultValor = plano1;
-            else if (valor >= 10001 && valor <= 20000)
-                resultValor = plano2;
-            else if (valor >= 20001 && valor <= 30000)
-                resultValor = plano3;
-            else if (valor >= 30001 && valor <= 40000)
-                resultValor = plano4;
-            else if (valor >= 40001 && valor <= 50000)
-                resultValor = plano5;
-            else if (valor >= 50001 && valor <= 60000)
-                resultValor = plano6;
-            else if (valor >= 60001 && valor <= 70000)
-                resultValor = plano7;
-            else if (valor >= 70001 && valor <= 80000)
-                resultValor = plano8;
-            else if (valor >= 80001 && valor <= 90000)
-                resultValor = plano9;
-            else if (valor >= 90001)
-                resultValor = 0;
 
-            return resultValor.ToString();
+
+        [HttpGet]
+        public List<Produto> GetMensalidade(string fipeValor)
+        {
+            float valor = float.Parse(fipeValor) / 100;
+            if (valor <= 10000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano1 / 12;
+                produtoA.Valor = plano1;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB1 / 12;
+                produtoB.Valor = planoB1;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC1 / 12;
+                produtoC.Valor = planoC1;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+
+
+            }
+            else if (valor >= 10001 && valor <= 20000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano2 / 12;
+                produtoA.Valor = plano2;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB2 / 12;
+                produtoB.Valor = planoB2;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC2 / 12;
+                produtoC.Valor = planoC2;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 20001 && valor <= 30000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano3 / 12;
+                produtoA.Valor = plano3;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB3 / 12;
+                produtoB.Valor = planoB3;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC3 / 12;
+                produtoC.Valor = planoC3;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 30001 && valor <= 40000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano4 / 12;
+                produtoA.Valor = plano4;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB4 / 12;
+                produtoB.Valor = planoB4;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC4 / 12;
+                produtoC.Valor = planoC4;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 40001 && valor <= 50000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano5 / 12;
+                produtoA.Valor = plano5;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB5 / 12;
+                produtoB.Valor = planoB5;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC5 / 12;
+                produtoC.Valor = planoC5;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 50001 && valor <= 60000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano6 / 12;
+                produtoA.Valor = plano6;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB6 / 12;
+                produtoB.Valor = planoB6;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC6 / 12;
+                produtoC.Valor = planoC6;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+
+            }
+            else if (valor >= 60001 && valor <= 70000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano7 / 12;
+                produtoA.Valor = plano7;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB7 / 12;
+                produtoB.Valor = planoB7;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC7 / 12;
+                produtoC.Valor = planoC7;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 70001 && valor <= 80000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano8 / 12;
+                produtoA.Valor = plano8;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB8 / 12;
+                produtoB.Valor = planoB8;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC8 / 12;
+                produtoC.Valor = planoC8;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 80001 && valor <= 90000)
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                Produto produtoA = MontaProduto(2);
+                produtoA.ValorParcela = plano9 / 12;
+                produtoA.Valor = plano9;
+
+                Produto produtoB = MontaProduto(3);
+                produtoB.ValorParcela = planoB9 / 12;
+                produtoB.Valor = planoB9;
+
+                Produto produtoC = MontaProduto(1);
+                produtoC.ValorParcela = planoC9 / 12;
+                produtoC.Valor = planoC9;
+
+                produtos.Add(produtoA);
+                produtos.Add(produtoB);
+                produtos.Add(produtoC);
+
+                return produtos;
+
+            }
+            else if (valor >= 90001)
+                return new List<Produto>();
+            else
+                return new List<Produto>();
+
         }
+
+        [HttpGet]
+        public double ValorRCF(int valorEscolhido)
+        {
+
+            return GetRCF(valorEscolhido);
+
+        }
+
+        [HttpGet]
+        public double ValorAPP(int valorEscolhido)
+        {
+
+            return GetAPP(valorEscolhido);
+
+        }
+
+
+
+        private double GetAPP(int valorEscolhido)
+        {
+            if (valorEscolhido == 10000)
+                return 20.64;
+            if (valorEscolhido == 20000)
+                return 37.08;
+            if (valorEscolhido == 30000)
+                return 40.61;
+            if (valorEscolhido == 40000)
+                return 50.43;
+            if (valorEscolhido == 50000)
+                return 63.20;
+            else
+                return 0;
+
+        }
+
+        private double GetRCF(int valorEscolhido)
+        {
+            if (valorEscolhido == 25000)
+                return 147.99;
+            if (valorEscolhido == 30000)
+                return 169.34;
+            if (valorEscolhido == 60000)
+                return 233.72;
+            if (valorEscolhido == 50000)
+                return 208.83;
+            if (valorEscolhido == 100000)
+                return 299.30;
+            if (valorEscolhido == 150000)
+                return 446.91;
+            if (valorEscolhido == 200000)
+                return 601.14;
+            if (valorEscolhido == 250000)
+                return 792.61;
+            if (valorEscolhido == 300000)
+                return 948.90;
+            else
+                return 0;
+
+        }
+
+        private Produto MontaProduto(int id)
+        {
+            Produto Oferta;
+            if (id == 1)
+            {
+                List<Cobertura> corb = new List<Cobertura>();
+                corb.Add(Compreensivo);
+                Oferta = new Produto()
+                {
+                    ValorParcela = 0,
+                    cobertura = corb,
+                    id = id,
+                    Valor = 0
+                };
+            }
+            else if (id == 2)
+            {
+                List<Cobertura> corb = new List<Cobertura>();
+                corb.Add(Compreensivo);
+                corb.Add(RouboEFurto);
+
+                Oferta = new Produto()
+                {
+                    ValorParcela = 0,
+                    cobertura = corb,
+                    id = id,
+                    Valor = 0
+                };
+            }
+            else
+            {
+                List<Cobertura> corb = new List<Cobertura>();
+                corb.Add(Compreensivo);
+                corb.Add(RouboEFurto);
+                corb.Add(PT);
+                Oferta = new Produto()
+                {
+                    ValorParcela = 0,
+                    cobertura = corb,
+                    id = id,
+                    Valor = 0
+                };
+            }
+
+            return Oferta;
+        }
+
+
     }
 
     public class Retorno
@@ -82,6 +434,20 @@ namespace Start.Controllers
         public int Order { get; set; }
         public string Preco { get; set; }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+    }
+
+    public class CotacaoCompleta
+    {
+        public Produto produto { get; set; }
+        public double RCF { get; set; }
+        public double APP { get; set; }
+        public bool PeqReparos { get; set; }
+        public bool AssAuto { get; set; }
+        public bool CorbCompleta { get; set; }
         public override string ToString()
         {
             return base.ToString();
