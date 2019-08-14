@@ -97,7 +97,6 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CotacaoController.cs" />
     <Compile Include="Controllers\ResidencialController.cs" />
-    <Compile Include="Controllers\ResidencialsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
