@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Start.Models;
 using System.Collections.Generic;
 using System;
+using Start.Library;
 
 namespace Start.Controllers
 {
@@ -70,18 +71,22 @@ namespace Start.Controllers
         public int GetSoma(int c, int d) => c + d;
 
         [HttpGet]
-        public List<Produto> GetFipe(string tipo, string acao, string modelo)
+        public List<Produto> GetFipe(string marca, string modelo, string ano)
         {
-            // Exemplo Base
-            /* http://fipeapi.appspot.com/api/1/carros/veiculo/21/4828/2013-1.json */
+        // Exemplo Base
+        /* http://fipeapi.appspot.com/api/1/carros/veiculo/21/4828/2013-1.json */
+       
 
-            var restClient = new RestClient(string.Format("http://fipeapi.appspot.com/api/1/carros/veiculo/{0}/{1}/{2}.json", tipo, acao, modelo));
+
+            //var restClient = new RestClient(string.Format("http://fipeapi.appspot.com/api/1/carros/veiculo/{0}/{1}/{2}.json", tipo, acao, modelo));
+            var restClient = new RestClient(string.Format(" https://parallelum.com.br/fipe/api/v1/carros/marcas/{0}/modelos/{1}/anos/{2}", marca, modelo, ano));
+
             RestRequest restRequest = new RestRequest(Method.GET);
 
             IRestResponse restResponse = restClient.Execute(restRequest);
-            Retorno dadosRetorno = new JsonDeserializer().Deserialize<Retorno>(restResponse);
+            RetornoParalelo dadosRetorno = new JsonDeserializer().Deserialize<RetornoParalelo>(restResponse);
 
-            string fipeValor = dadosRetorno.Preco.Remove(0, 3);
+            string fipeValor = dadosRetorno.Valor.Remove(0, 3);
 
             return GetMensalidade(ConverteNum(fipeValor));
         }
@@ -325,11 +330,21 @@ namespace Start.Controllers
             
         }
 
-        //[HttpPost]
-        //public string salvar(CotacaoCompleta cot)
-        //{
-            
-        //}
+        [HttpPost]
+        public string Salvar(CotacaoCompleta cot)
+        {
+            try
+            {
+                ContextDB dB = new ContextDB();
+                dB.CotacaoCompleta.Add(cot);
+                return ("Concluido");
+            }
+            catch (Exception e)
+            {
+                return ("Houve um problema");
+
+            }
+        }
 
         private double GetAPP(int valorEscolhido)
         {
@@ -429,22 +444,25 @@ namespace Start.Controllers
         public string Name { get; set; }
         public string Fipe_Name { get; set; }
         public int Order { get; set; }
-        public string Preco { get; set; }
+        public string Valor { get; set; }
 
         public override string ToString()
         {
             return base.ToString();
         }
     }
-
-    public class CotacaoCompleta
+    public class RetornoParalelo
     {
-        public Produto produto { get; set; }
-        public double RCF { get; set; }
-        public double APP { get; set; }
-        public bool PeqReparos { get; set; }
-        public bool AssAuto { get; set; }
-        public bool CorbCompleta { get; set; }
+        public string Valor { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string AnoModelo { get; set; }
+        public string Combustivel { get; set; }
+        public string CodigoFipe { get; set; }
+        public string MesReferencia { get; set; }
+        public int TipoVeiculo { get; set; }
+        public string SiglaCombustivel { get; set; }
+
         public override string ToString()
         {
             return base.ToString();
