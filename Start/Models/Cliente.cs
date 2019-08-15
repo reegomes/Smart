@@ -12,6 +12,7 @@ namespace Start.Models
         public string Nome { get; set; }
         public virtual ICollection<Cotacao> Cotacao { get; set; }
         public virtual ICollection<Residencial> Residencial { get; set; }
+        public virtual ICollection<Viagem> Viagem { get; set; }
 
         public Cliente(string cpf, string nome, ICollection<Cotacao> cotacao)
         {

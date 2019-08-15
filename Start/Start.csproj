@@ -97,6 +97,7 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CotacaoController.cs" />
     <Compile Include="Controllers\ResidencialController.cs" />
+    <Compile Include="Controllers\ViagemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -107,6 +108,7 @@
     <Compile Include="Models\Cotacao.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Residencial.cs" />
+    <Compile Include="Models\Viagem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

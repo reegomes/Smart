@@ -20,5 +20,7 @@ namespace Start.Library
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<Start.Models.Viagem> Viagems { get; set; }
     }
 }
