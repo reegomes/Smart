@@ -65,18 +65,18 @@ namespace Start.Controllers
             if (tipo == "casa")
             {
                 if (plano == 1) { return mensalidade(oferta1casa).ToString(); }
-                if (plano == 2) { return mensalidade(oferta2casa).ToString(); }
-                if (plano == 3) { return mensalidade(oferta3casa).ToString(); }
-                if (plano == 4) { return mensalidade(oferta4casa).ToString(); }
-                if (plano == 5) { return mensalidade(oferta5casa).ToString(); }
+                else if (plano == 2) { return mensalidade(oferta2casa).ToString(); }
+                else if (plano == 3) { return mensalidade(oferta3casa).ToString(); }
+                else if (plano == 4) { return mensalidade(oferta4casa).ToString(); }
+                else if (plano == 5) { return mensalidade(oferta5casa).ToString(); }
             }
             else if (tipo == "apartamento")
             {
                 if (plano == 1) { return mensalidade(oferta1ap).ToString(); }
-                if (plano == 2) { return mensalidade(oferta2ap).ToString(); }
-                if (plano == 3) { return mensalidade(oferta3ap).ToString(); }
-                if (plano == 4) { return mensalidade(oferta4ap).ToString(); }
-                if (plano == 5) { return mensalidade(oferta5ap).ToString(); }
+                else if (plano == 2) { return mensalidade(oferta2ap).ToString(); }
+                else if (plano == 3) { return mensalidade(oferta3ap).ToString(); }
+                else if (plano == 4) { return mensalidade(oferta4ap).ToString(); }
+                else if (plano == 5) { return mensalidade(oferta5ap).ToString(); }
             }
             else
             {
