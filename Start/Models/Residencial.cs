@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Start.Models
@@ -10,8 +11,12 @@ namespace Start.Models
         public string CEP { get; set; }
         public string NumeroDaCasa { get; set; }
         public string Complemento { get; set; }
-        public string Tipo { get; set; }
         public string Logradouro { get; set; }
+        public bool AptoCasa { get; set; }
+        public bool IQRE { get; set; }
+        public bool FERB { get; set; }
+        public bool DT { get; set; }
+        public bool PPA { get; set; }
         public int ClienteId { get; set; }
 
         [ForeignKey("ClienteId")]
@@ -22,23 +27,32 @@ namespace Start.Models
 
         }
 
-        public Residencial(string cEP, string numeroDaCasa, string complemento, string tipo, string logradouro, Cliente cliente)
+        public Residencial(string cEP, string numeroDaCasa, string complemento, string logradouro, bool aptoCasa, bool iQRE, bool fERB, bool dT, bool pPA)
         {
             CEP = cEP;
             NumeroDaCasa = numeroDaCasa;
             Complemento = complemento;
-            Tipo = tipo;
             Logradouro = logradouro;
-            Cliente = cliente;
+            AptoCasa = aptoCasa;
+            IQRE = iQRE;
+            FERB = fERB;
+            DT = dT;
+            PPA = pPA;
         }
 
-        public Residencial(string cEP, string numeroDaCasa, string complemento, string tipo, string logradouro)
+        public Residencial(int id, string cEP, string numeroDaCasa, string complemento, string logradouro, bool aptoCasa, bool iQRE, bool fERB, bool dT, bool pPA, Cliente cliente)
         {
-            CEP = cEP;
-            NumeroDaCasa = numeroDaCasa;
-            Complemento = complemento;
-            Tipo = tipo;
-            Logradouro = logradouro;
+            Id = id;
+            CEP = cEP ?? throw new ArgumentNullException(nameof(cEP));
+            NumeroDaCasa = numeroDaCasa ?? throw new ArgumentNullException(nameof(numeroDaCasa));
+            Complemento = complemento ?? throw new ArgumentNullException(nameof(complemento));
+            Logradouro = logradouro ?? throw new ArgumentNullException(nameof(logradouro));
+            AptoCasa = aptoCasa;
+            IQRE = iQRE;
+            FERB = fERB;
+            DT = dT;
+            PPA = pPA;
+            Cliente = cliente ?? throw new ArgumentNullException(nameof(cliente));
         }
     }
 }
