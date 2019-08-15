@@ -102,10 +102,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\ContextDB.cs" />
+    <Compile Include="Migrations\201908142351421_teste3.cs" />
+    <Compile Include="Migrations\201908142351421_teste3.Designer.cs">
+      <DependentUpon>201908142351421_teste3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cobertura.cs" />
     <Compile Include="Models\Cotacao.cs" />
+    <Compile Include="Models\CotacaoCompleta.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Residencial.cs" />
     <Compile Include="Models\Viagem.cs" />
@@ -116,6 +121,7 @@
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Properties\PublishProfiles\SmartInsure - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -129,6 +135,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908142351421_teste3.resx">
+      <DependentUpon>201908142351421_teste3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
