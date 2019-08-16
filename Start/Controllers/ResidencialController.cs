@@ -79,7 +79,7 @@ namespace Start.Controllers
         private static Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel", id = 8 };
 
         #endregion
-        public string Get(string tipo, int plano)
+        /*public string Get(string tipo, int plano)
         {
             if (tipo == "casa")
             {
@@ -102,126 +102,89 @@ namespace Start.Controllers
                 return "Error";
             }
             return null;
-        }
+        }*/
 
-        public float Mensalidade(float oferta)
+        /*public float Mensalidade(float oferta)
         {
             return oferta / 12;
-        }
+        }*/
 
 
         [HttpGet]
-        public List<Produto> GetMensalidade(string tipo, int plano)
+        public List<Produto> GetMensalidade(string tipo)
         {
             List<Produto> produtos = new List<Produto>();
             if (tipo == "casa")
             {
-                if (plano == 1)
+                Produto oferta1 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta1casa/12,
-                        Valor = oferta1casa
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 2)
+                    ValorParcela = oferta1casa / 12,
+                    Valor = oferta1casa
+                };
+                Produto oferta2 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta2casa / 12,
-                        Valor = oferta2casa
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 3)
+                    ValorParcela = oferta2casa / 12,
+                    Valor = oferta2casa
+                };
+                Produto oferta3 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta3casa / 12,
-                        Valor = oferta3casa
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 4)
+                    ValorParcela = oferta3casa / 12,
+                    Valor = oferta3casa
+                };
+                Produto oferta4 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta4casa / 12,
-                        Valor = oferta4casa
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 5)
+                    ValorParcela = oferta4casa / 12,
+                    Valor = oferta4casa
+                };
+                Produto oferta5 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta5casa / 12,
-                        Valor = oferta5casa
-                    };
+                    ValorParcela = oferta5casa / 12,
+                    Valor = oferta5casa
+                };
 
-                    produtos.Add(oferta);
-                }
+                produtos.Add(oferta1);
+                produtos.Add(oferta2);
+                produtos.Add(oferta3);
+                produtos.Add(oferta4);
+                produtos.Add(oferta5);
 
             }
             else if (tipo == "apartamento")
             {
-                if (plano == 1)
+                Produto oferta1 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta1ap / 12,
-                        Valor = oferta1ap
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 2)
+                    ValorParcela = oferta1ap / 12,
+                    Valor = oferta1ap
+                };
+                Produto oferta2 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta2ap / 12,
-                        Valor = oferta2ap
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 3)
+                    ValorParcela = oferta2ap / 12,
+                    Valor = oferta2ap
+                };
+                Produto oferta3 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta3ap / 12,
-                        Valor = oferta3ap
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 4)
+                    ValorParcela = oferta3ap / 12,
+                    Valor = oferta3ap
+                };
+                Produto oferta4 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta4ap / 12,
-                        Valor = oferta4ap
-                    };
-
-                    produtos.Add(oferta);
-                }
-                else if (plano == 5)
+                    ValorParcela = oferta4ap / 12,
+                    Valor = oferta4ap
+                };
+                Produto oferta5 = new Produto()
                 {
-                    Produto oferta = new Produto()
-                    {
-                        ValorParcela = oferta5ap / 12,
-                        Valor = oferta5ap
-                    };
+                    ValorParcela = oferta5ap / 12,
+                    Valor = oferta5ap
+                };
 
-                    produtos.Add(oferta);
-                }
+                produtos.Add(oferta1);
+                produtos.Add(oferta2);
+                produtos.Add(oferta3);
+                produtos.Add(oferta4);
+                produtos.Add(oferta5);
+
             }
-            
+
             return produtos;
         }
     }
