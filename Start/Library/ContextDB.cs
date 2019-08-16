@@ -21,6 +21,6 @@ namespace Start.Library
             base.OnModelCreating(modelBuilder);
         }
 
-       // public System.Data.Entity.DbSet<Start.Models.Residencial> Residencials { get; set; }
+        public System.Data.Entity.DbSet<Start.Models.Residencial> Residencials { get; set; }
     }
 }

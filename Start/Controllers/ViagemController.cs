@@ -22,15 +22,14 @@ namespace Start.Controllers
     public class ViagemController : ApiController
     {
         private ContextDB db = new ContextDB();
-
         
         public float Valor(int dias, string plano)
         {
-            if (plano == "economy")
+            if (plano == "Economy")
             {
                 return dias * 5.35f;
             }
-            else if (plano == "premium")
+            else if (plano == "Premium")
             {
                 return dias * 16.33f;
             }
@@ -40,22 +39,43 @@ namespace Start.Controllers
             }         
         }
 
-        //
+        private static Cobertura Economy = new Cobertura
+        {
+            nome = "Economy",
+            id = 9
+        };
+        private static Cobertura Premium = new Cobertura
+        {
+            nome = "Premium",
+            id = 10
+        };
 
         [HttpGet]
-        public string GetDolar()
+        public string GetDolar(string dias, string plano)
         {
-            var restClient = new RestClient(string.Format("https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='{0}'", DateTime.Now.ToString("MM'-'dd'-'yyyy")));
+            var restClient = new RestClient(string.Format("https://api.hgbrasil.com/finance?fields=only_results&source=BRL&buy=1&sell=1&key=0c75e674"));
             RestRequest restRequest = new RestRequest(Method.GET);
 
             IRestResponse restResponse = restClient.Execute(restRequest);
+            var DolToday = restResponse.Content.ToString();
 
-            var oi = restResponse.Content;
+            string phrase = DolToday;
+            string[] words = phrase.Split('\"');
 
-            return oi;
+            foreach (var word in words)
+            {
+                int i = 0;
+                System.Console.WriteLine($"<{word}>");
+                string variacao = words[18]; // Não estou usando pra nada.
+                string a = words[14];
+                string b = a.Replace(":", "");
+                string c = b.Replace(",", "").ToString();
 
+                var result = Valor(int.Parse(dias), plano);
+                var result2 = result * float.Parse(c);
+                return result2.ToString();
+            }
+            return null;
         }
     }
-}
- 
- 
+} 
