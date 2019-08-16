@@ -64,7 +64,6 @@ namespace Start.Controllers
             nome = "PT Colisão e Roubo e Furto",
             id = 3
         };
-
         #endregion
 
         [HttpGet]

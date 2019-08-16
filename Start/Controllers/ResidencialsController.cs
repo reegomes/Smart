@@ -18,16 +18,38 @@ namespace Start.Controllers
     {
         private ContextDB db = new ContextDB();
 
+        #region planos
         private const float oferta1casa = 216.15f;
-        private const float oferta1ap = 172.92f;
         private const float oferta2casa = 272.35f;
-        private const float oferta2ap = 217.88f;
         private const float oferta3casa = 343.16f;
-        private const float oferta3ap = 274.53f;
         private const float oferta4casa = 432.39f;
-        private const float oferta4ap = 345.91f;
         private const float oferta5casa = 544.81f;
+
+        private const float oferta1ap = 172.92f;
+        private const float oferta2ap = 217.88f;
+        private const float oferta3ap = 274.53f;
+        private const float oferta4ap = 345.91f;
         private const float oferta5ap = 435.84f;
+        #endregion
+
+        #region coberturas
+        private static Cobertura Incendio = new Cobertura
+        {
+            nome = "Compreensivo",
+            id = 1
+        };
+        private static Cobertura RouboEFurto = new Cobertura
+        {
+            nome = "Roubo e Furto",
+            id = 2
+        };
+        private static Cobertura PT = new Cobertura
+        {
+            nome = "PT Colisão e Roubo e Furto",
+            id = 3
+        };
+
+        #endregion
 
 
         /* http://localhost:56067/Api/Residencials?cpf=12345678910&nome=fulano&marca=gm&ano=1998 */
