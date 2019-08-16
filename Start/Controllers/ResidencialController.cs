@@ -118,26 +118,31 @@ namespace Start.Controllers
             {
                 Produto oferta1 = new Produto()
                 {
+                    id = 1,
                     ValorParcela = oferta1casa / 12,
                     Valor = oferta1casa
                 };
                 Produto oferta2 = new Produto()
                 {
+                    id = 2,
                     ValorParcela = oferta2casa / 12,
                     Valor = oferta2casa
                 };
                 Produto oferta3 = new Produto()
                 {
+                    id = 3,
                     ValorParcela = oferta3casa / 12,
                     Valor = oferta3casa
                 };
                 Produto oferta4 = new Produto()
                 {
+                    id = 4,
                     ValorParcela = oferta4casa / 12,
                     Valor = oferta4casa
                 };
                 Produto oferta5 = new Produto()
                 {
+                    id = 5,
                     ValorParcela = oferta5casa / 12,
                     Valor = oferta5casa
                 };
@@ -153,26 +158,31 @@ namespace Start.Controllers
             {
                 Produto oferta1 = new Produto()
                 {
+                    id = 1,
                     ValorParcela = oferta1ap / 12,
                     Valor = oferta1ap
                 };
                 Produto oferta2 = new Produto()
                 {
+                    id = 2,
                     ValorParcela = oferta2ap / 12,
                     Valor = oferta2ap
                 };
                 Produto oferta3 = new Produto()
                 {
+                    id = 3,
                     ValorParcela = oferta3ap / 12,
                     Valor = oferta3ap
                 };
                 Produto oferta4 = new Produto()
                 {
+                    id = 4,
                     ValorParcela = oferta4ap / 12,
                     Valor = oferta4ap
                 };
                 Produto oferta5 = new Produto()
                 {
+                    id = 5,
                     ValorParcela = oferta5ap / 12,
                     Valor = oferta5ap
                 };
