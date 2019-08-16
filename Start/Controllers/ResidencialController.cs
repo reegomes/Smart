@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Web.Http;
+using System.Collections.Generic;
 
 namespace Start.Controllers
 {
@@ -52,17 +53,32 @@ namespace Start.Controllers
             }
         }
 
+        #region planos
         private const float oferta1casa = 216.15f;
-        private const float oferta1ap = 172.92f;
         private const float oferta2casa = 272.35f;
-        private const float oferta2ap = 217.88f;
         private const float oferta3casa = 343.16f;
-        private const float oferta3ap = 274.53f;
-        private const float oferta4casa = 432.39f;
-        private const float oferta4ap = 345.91f;
+        private const float oferta4casa = 432.39f;        
         private const float oferta5casa = 544.81f;
+        
+        private const float oferta1ap = 172.92f;
+        private const float oferta2ap = 217.88f;
+        private const float oferta3ap = 274.53f;
+        private const float oferta4ap = 345.91f;
         private const float oferta5ap = 435.84f;
+        #endregion
 
+        #region coberturas
+
+        private static Cobertura Incendio = new Cobertura { nome = "Incendio", id = 1 };
+        private static Cobertura Raio = new Cobertura { nome = "Queda de Raio", id = 2 };
+        private static Cobertura Explosao = new Cobertura { nome = "Explosão", id = 3 };
+        private static Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo", id = 4 };
+        private static Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos", id = 5 };
+        private static Cobertura Roubo = new Cobertura { nome = "Roubo de Bens", id = 6 };
+        private static Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar", id = 7 };
+        private static Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel", id = 8 };
+
+        #endregion
         public string Get(string tipo, int plano)
         {
             if (tipo == "casa")
@@ -91,6 +107,122 @@ namespace Start.Controllers
         public float Mensalidade(float oferta)
         {
             return oferta / 12;
+        }
+
+
+        [HttpGet]
+        public List<Produto> GetMensalidade(string tipo, int plano)
+        {
+            List<Produto> produtos = new List<Produto>();
+            if (tipo == "casa")
+            {
+                if (plano == 1)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta1casa/12,
+                        Valor = oferta1casa
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 2)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta2casa / 12,
+                        Valor = oferta2casa
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 3)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta3casa / 12,
+                        Valor = oferta3casa
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 4)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta4casa / 12,
+                        Valor = oferta4casa
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 5)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta5casa / 12,
+                        Valor = oferta5casa
+                    };
+
+                    produtos.Add(oferta);
+                }
+
+            }
+            else if (tipo == "apartamento")
+            {
+                if (plano == 1)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta1ap / 12,
+                        Valor = oferta1ap
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 2)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta2ap / 12,
+                        Valor = oferta2ap
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 3)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta3ap / 12,
+                        Valor = oferta3ap
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 4)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta4ap / 12,
+                        Valor = oferta4ap
+                    };
+
+                    produtos.Add(oferta);
+                }
+                else if (plano == 5)
+                {
+                    Produto oferta = new Produto()
+                    {
+                        ValorParcela = oferta5ap / 12,
+                        Valor = oferta5ap
+                    };
+
+                    produtos.Add(oferta);
+                }
+            }
+            
+            return produtos;
         }
     }
 }
