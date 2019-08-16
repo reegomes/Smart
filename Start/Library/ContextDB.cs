@@ -10,8 +10,9 @@ namespace Start.Library
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Cobertura> Cobertura { get; set; }
         public DbSet<CotacaoCompleta> CotacaoCompleta { get; set; }
-
         public DbSet<Residencial> Residencials { get; set; }
+
+
         public ContextDB() : base("name=ContextDB")
         {
         }
@@ -22,7 +23,5 @@ namespace Start.Library
 
             base.OnModelCreating(modelBuilder);
         }
-
-        public System.Data.Entity.DbSet<Start.Models.Residencial> Residencials { get; set; }
     }
 }

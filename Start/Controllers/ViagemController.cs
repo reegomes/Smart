@@ -26,17 +26,11 @@ namespace Start.Controllers
         public float Valor(int dias, string plano)
         {
             if (plano == "Economy")
-            {
-                return dias * 5.35f;
-            }
+                return dias * economy;
             else if (plano == "Premium")
-            {
-                return dias * 16.33f;
-            }
+                return dias * premium;
             else
-            {
-                return 0;
-            }         
+                return 0;       
         }
 
         private static Cobertura Economy = new Cobertura
@@ -64,9 +58,8 @@ namespace Start.Controllers
 
             foreach (var word in words)
             {
-                int i = 0;
                 System.Console.WriteLine($"<{word}>");
-                string variacao = words[18]; // Não estou usando pra nada.
+                string variacao = words[18]; // Não estou usando pra nada, mas acho que pode ser útil no futuro.
                 string a = words[14];
                 string b = a.Replace(":", "");
                 string c = b.Replace(",", "").ToString();
@@ -77,5 +70,12 @@ namespace Start.Controllers
             }
             return null;
         }
+
+        #region Planos
+        private const float economy = 5.35f;
+        private const float gold = 0f;
+        private const float premium = 16.33f;
+        #endregion
+
     }
 } 
