@@ -102,6 +102,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\ContextDB.cs" />
+    <Compile Include="Library\PaisesType.cs" />
+    <Compile Include="Library\UFType.cs" />
+    <Compile Include="Library\ViagemType.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Cobertura.cs" />

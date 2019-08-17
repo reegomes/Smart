@@ -22,7 +22,6 @@ namespace Start.Controllers
     public class ViagemController : ApiController
     {
         private ContextDB db = new ContextDB();
-        
         public float Valor(int dias, string plano)
         {
             if (plano == "Economy")
@@ -32,7 +31,6 @@ namespace Start.Controllers
             else
                 return 0;       
         }
-
         private static Cobertura Economy = new Cobertura
         {
             nome = "Economy",
@@ -43,9 +41,8 @@ namespace Start.Controllers
             nome = "Premium",
             id = 10
         };
-
         [HttpGet]
-        public string GetDolar(string dias, string plano)
+        public string Get(string dias, string plano)
         {
             var restClient = new RestClient(string.Format("https://api.hgbrasil.com/finance?fields=only_results&source=BRL&buy=1&sell=1&key=0c75e674"));
             RestRequest restRequest = new RestRequest(Method.GET);
@@ -70,12 +67,39 @@ namespace Start.Controllers
             }
             return null;
         }
-
         #region Planos
         private const float economy = 5.35f;
         private const float gold = 0f;
         private const float premium = 16.33f;
         #endregion
-
+        [HttpPost]
+        public void Post(string cPF, string nome, string email, string dataNascimento, string sexo, string estadoCivil, int cEP, string logradouro, int numero, string complemento, string bairro, string cidade, string uF, int telefoneResidencial, int telefoneCelular, string motivoViagem, string dataPartida, string dataRetorno)
+        {
+            if (!string.IsNullOrEmpty(cPF))
+            {
+                using (var ctx = new ContextDB())
+                {
+                    Cliente clienteObj = new Cliente(cPF, nome, email, dataNascimento, sexo, estadoCivil);
+                    Viagem viagemObj = new Viagem(cEP, logradouro, numero, complemento, bairro, cidade, uF, telefoneResidencial, telefoneCelular, motivoViagem, dataPartida, dataRetorno);
+                    try
+                    {
+                        var BuscaCPF = ctx.Clientes.Where(c => c.CPF == clienteObj.CPF).FirstOrDefault();
+                        if (clienteObj.CPF == BuscaCPF.CPF)
+                        {
+                            viagemObj.ClienteId = BuscaCPF.Id;
+                            ctx.Viagems.Add(viagemObj);
+                            ctx.SaveChanges();
+                        }
+                    }
+                    catch (NullReferenceException)
+                    {
+                        ctx.Clientes.Add(clienteObj);
+                        ctx.Viagems.Add(viagemObj);
+                        ctx.SaveChanges();
+                        return;
+                    }
+                }
+            }
+        }
     }
-} 
+}
