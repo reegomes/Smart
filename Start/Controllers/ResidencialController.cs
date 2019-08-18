@@ -1,6 +1,7 @@
 ﻿using Start.Library;
 using Start.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.Http;
@@ -52,18 +53,33 @@ namespace Start.Controllers
             }
         }
 
+        #region planos
         private const float oferta1casa = 216.15f;
-        private const float oferta1ap = 172.92f;
         private const float oferta2casa = 272.35f;
-        private const float oferta2ap = 217.88f;
         private const float oferta3casa = 343.16f;
-        private const float oferta3ap = 274.53f;
         private const float oferta4casa = 432.39f;
-        private const float oferta4ap = 345.91f;
         private const float oferta5casa = 544.81f;
-        private const float oferta5ap = 435.84f;
 
-        public string Get(string tipo, int plano)
+        private const float oferta1ap = 172.92f;
+        private const float oferta2ap = 217.88f;
+        private const float oferta3ap = 274.53f;
+        private const float oferta4ap = 345.91f;
+        private const float oferta5ap = 435.84f;
+        #endregion
+
+        #region coberturas
+
+        private static readonly Cobertura Incendio = new Cobertura { nome = "Incendio", id = 1 };
+        private static readonly Cobertura Raio = new Cobertura { nome = "Queda de Raio", id = 2 };
+        private static readonly Cobertura Explosao = new Cobertura { nome = "Explosão", id = 3 };
+        private static readonly Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo", id = 4 };
+        private static readonly Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos", id = 5 };
+        private static readonly Cobertura Roubo = new Cobertura { nome = "Roubo de Bens", id = 6 };
+        private static readonly Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar", id = 7 };
+        private static readonly Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel", id = 8 };
+
+        #endregion
+        /*public string Get(string tipo, int plano)
         {
             if (tipo == "casa")
             {
@@ -86,11 +102,114 @@ namespace Start.Controllers
                 return "Error";
             }
             return null;
-        }
+        }*/
 
-        public float Mensalidade(float oferta)
+        /*public float Mensalidade(float oferta)
         {
             return oferta / 12;
+        }*/
+
+
+        [HttpGet]
+        public List<Produto> GetMensalidade(string tipo)
+        {
+            List<Produto> produtos = new List<Produto>();
+            if (tipo == "casa")
+            {
+                Produto oferta1 = new Produto()
+                {
+                    id = 1,
+                    ValorParcela = oferta1casa / 12,
+                    Valor = oferta1casa
+                };
+                Produto oferta2 = new Produto()
+                {
+                    id = 2,
+                    ValorParcela = oferta2casa / 12,
+                    Valor = oferta2casa
+                };
+                Produto oferta3 = new Produto()
+                {
+                    id = 3,
+                    ValorParcela = oferta3casa / 12,
+                    Valor = oferta3casa
+                };
+                Produto oferta4 = new Produto()
+                {
+                    id = 4,
+                    ValorParcela = oferta4casa / 12,
+                    Valor = oferta4casa
+                };
+                Produto oferta5 = new Produto()
+                {
+                    id = 5,
+                    ValorParcela = oferta5casa / 12,
+                    Valor = oferta5casa
+                };
+
+                produtos.Add(oferta1);
+                produtos.Add(oferta2);
+                produtos.Add(oferta3);
+                produtos.Add(oferta4);
+                produtos.Add(oferta5);
+
+            }
+            else if (tipo == "apartamento")
+            {
+                Produto oferta1 = new Produto()
+                {
+                    id = 1,
+                    ValorParcela = oferta1ap / 12,
+                    Valor = oferta1ap
+                };
+                Produto oferta2 = new Produto()
+                {
+                    id = 2,
+                    ValorParcela = oferta2ap / 12,
+                    Valor = oferta2ap
+                };
+                Produto oferta3 = new Produto()
+                {
+                    id = 3,
+                    ValorParcela = oferta3ap / 12,
+                    Valor = oferta3ap
+                };
+                Produto oferta4 = new Produto()
+                {
+                    id = 4,
+                    ValorParcela = oferta4ap / 12,
+                    Valor = oferta4ap
+                };
+                Produto oferta5 = new Produto()
+                {
+                    id = 5,
+                    ValorParcela = oferta5ap / 12,
+                    Valor = oferta5ap
+                };
+
+                produtos.Add(oferta1);
+                produtos.Add(oferta2);
+                produtos.Add(oferta3);
+                produtos.Add(oferta4);
+                produtos.Add(oferta5);
+
+            }
+            return produtos;
+        }
+        
+        [HttpGet]
+        public List<Produto> RetornList(string tipo, string ordem)
+        {
+            if (ordem == "id")
+                return GetMensalidade(tipo).OrderBy(x => x.id).ToList();
+            if (ordem == "idDec")
+                return GetMensalidade(tipo).OrderByDescending(x => x.id).ToList();
+            if (ordem == "valor")
+                return GetMensalidade(tipo).OrderBy(x => x.Valor).ToList();
+            if (ordem == "valorDec")
+                return GetMensalidade(tipo).OrderByDescending(x => x.Valor).ToList();
+            else
+                return null;
         }
     }
 }

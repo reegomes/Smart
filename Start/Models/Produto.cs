@@ -13,5 +13,10 @@ namespace Start.Models
 
         public float ValorAuto { get; set; }
         public List<Cobertura> cobertura { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Produto ID: {0}, Valor: {1}, Parcela: {2}, Cobertura: {3}.", id, Valor, ValorParcela, cobertura);
+        }
     }
 }

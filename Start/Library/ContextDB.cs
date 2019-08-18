@@ -10,6 +10,9 @@ namespace Start.Library
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Cobertura> Cobertura { get; set; }
         public DbSet<CotacaoCompleta> CotacaoCompleta { get; set; }
+        public DbSet<Residencial> Residencials { get; set; }
+        public DbSet<Viagem> Viagems { get; set; }
+
         public ContextDB() : base("name=ContextDB")
         {
         }
@@ -17,10 +20,9 @@ namespace Start.Library
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cotacao>().HasRequired(c => c.Cliente).WithMany(c => c.Cotacao);
+            modelBuilder.Entity<Viagem>().HasRequired(c => c.Cliente).WithMany(c => c.Viagem);
 
             base.OnModelCreating(modelBuilder);
         }
-
-       // public System.Data.Entity.DbSet<Start.Models.Residencial> Residencials { get; set; }
     }
 }
