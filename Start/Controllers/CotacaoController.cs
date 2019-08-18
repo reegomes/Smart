@@ -6,6 +6,7 @@ using Start.Models;
 using System.Collections.Generic;
 using System;
 using Start.Library;
+using System.Linq;
 
 namespace Start.Controllers
 {
@@ -49,21 +50,32 @@ namespace Start.Controllers
 
 
         #region Cobeturas
-        private static Cobertura Compreensivo = new Cobertura
+        private static Cobertura RouboFurto = new Cobertura
         {
-            nome = "Compreensivo",
+            nome = " Roubo, Furto e Incêndio",
             id = 1
         };
-        private static Cobertura RouboEFurto = new Cobertura
+        private static Cobertura Guincho = new Cobertura
         {
-            nome = "Roubo e Furto",
+            nome = " Serviço de Guincho",
             id = 2
         };
-        private static Cobertura PT = new Cobertura
+        private static Cobertura Colisao = new Cobertura
         {
-            nome = "PT Colisão e Roubo e Furto",
+            nome = "Colisão - Somente Perda Total(Danos)",
             id = 3
         };
+        private static Cobertura Alagamento = new Cobertura
+        {
+            nome = "Alagamento",
+            id = 4
+        };
+        private static Cobertura Colisao2 = new Cobertura
+        {
+            nome = "Colisão - Qualquer Evento (Batida)",
+            id = 5
+        };
+
 
         #endregion
 
@@ -88,8 +100,9 @@ namespace Start.Controllers
 
             string fipeValor = dadosRetorno.Valor.Remove(0, 3);
 
-            return GetMensalidade(ConverteNum(fipeValor));
+            return GetMensalidade(ConverteNum(fipeValor)).OrderBy(x => x.id).ToList();
         }
+
 
         public string ConverteNum(string str)
         {
@@ -105,17 +118,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano1 / 12;
                 produtoA.Valor = plano1;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB1 / 12;
                 produtoB.Valor = planoB1;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC1 / 12;
                 produtoC.Valor = planoC1;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -130,17 +146,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano2 / 12;
                 produtoA.Valor = plano2;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB2 / 12;
                 produtoB.Valor = planoB2;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC2 / 12;
                 produtoC.Valor = planoC2;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -153,17 +172,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano3 / 12;
                 produtoA.Valor = plano3;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB3 / 12;
                 produtoB.Valor = planoB3;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC3 / 12;
                 produtoC.Valor = planoC3;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -176,17 +198,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano4 / 12;
                 produtoA.Valor = plano4;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB4 / 12;
                 produtoB.Valor = planoB4;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC4 / 12;
                 produtoC.Valor = planoC4;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -199,17 +224,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano5 / 12;
                 produtoA.Valor = plano5;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB5 / 12;
                 produtoB.Valor = planoB5;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC5 / 12;
                 produtoC.Valor = planoC5;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -222,17 +250,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano6 / 12;
                 produtoA.Valor = plano6;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB6 / 12;
                 produtoB.Valor = planoB6;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC6 / 12;
                 produtoC.Valor = planoC6;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -246,17 +277,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano7 / 12;
                 produtoA.Valor = plano7;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB7 / 12;
                 produtoB.Valor = planoB7;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC7 / 12;
                 produtoC.Valor = planoC7;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -269,17 +303,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano8 / 12;
                 produtoA.Valor = plano8;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB8 / 12;
                 produtoB.Valor = planoB8;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC8 / 12;
                 produtoC.Valor = planoC8;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -292,17 +329,20 @@ namespace Start.Controllers
             {
                 List<Produto> produtos = new List<Produto>();
 
-                Produto produtoA = MontaProduto(2);
+                Produto produtoA = MontaProduto(3);
                 produtoA.ValorParcela = plano9 / 12;
                 produtoA.Valor = plano9;
+                produtoA.ValorAuto = valor;
 
-                Produto produtoB = MontaProduto(3);
+                Produto produtoB = MontaProduto(1);
                 produtoB.ValorParcela = planoB9 / 12;
                 produtoB.Valor = planoB9;
+                produtoB.ValorAuto = valor;
 
-                Produto produtoC = MontaProduto(1);
+                Produto produtoC = MontaProduto(2);
                 produtoC.ValorParcela = planoC9 / 12;
                 produtoC.Valor = planoC9;
+                produtoC.ValorAuto = valor;
 
                 produtos.Add(produtoA);
                 produtos.Add(produtoB);
@@ -394,7 +434,8 @@ namespace Start.Controllers
             if (id == 1)
             {
                 List<Cobertura> corb = new List<Cobertura>();
-                corb.Add(Compreensivo);
+                corb.Add(RouboFurto);
+                corb.Add(Guincho);
                 Oferta = new Produto()
                 {
                     ValorParcela = 0,
@@ -406,8 +447,10 @@ namespace Start.Controllers
             else if (id == 2)
             {
                 List<Cobertura> corb = new List<Cobertura>();
-                corb.Add(Compreensivo);
-                corb.Add(RouboEFurto);
+                corb.Add(RouboFurto);
+                corb.Add(Colisao);
+                corb.Add(Alagamento);
+                corb.Add(Guincho);
 
                 Oferta = new Produto()
                 {
@@ -420,9 +463,13 @@ namespace Start.Controllers
             else
             {
                 List<Cobertura> corb = new List<Cobertura>();
-                corb.Add(Compreensivo);
-                corb.Add(RouboEFurto);
-                corb.Add(PT);
+
+                corb.Add(RouboFurto);
+                corb.Add(Colisao);
+                corb.Add(Colisao2);
+                corb.Add(Alagamento);
+                corb.Add(Guincho);
+
                 Oferta = new Produto()
                 {
                     ValorParcela = 0,

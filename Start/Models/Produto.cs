@@ -10,6 +10,8 @@ namespace Start.Models
         public int id { get; set; }
         public double Valor { get; set; }
         public double ValorParcela { get; set; }
+
+        public float ValorAuto { get; set; }
         public List<Cobertura> cobertura { get; set; }
     }
 }
