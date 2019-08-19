@@ -69,15 +69,6 @@ namespace Start.Controllers
 
         #region coberturas
 
-        private static readonly Cobertura Incendio = new Cobertura { nome = "Incendio", id = 1 };
-        private static readonly Cobertura Raio = new Cobertura { nome = "Queda de Raio", id = 2 };
-        private static readonly Cobertura Explosao = new Cobertura { nome = "Explosão", id = 3 };
-        private static readonly Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo", id = 4 };
-        private static readonly Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos", id = 5 };
-        private static readonly Cobertura Roubo = new Cobertura { nome = "Roubo de Bens", id = 6 };
-        private static readonly Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar", id = 7 };
-        private static readonly Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel", id = 8 };
-
         #endregion
         /*public string Get(string tipo, int plano)
         {
@@ -109,42 +100,269 @@ namespace Start.Controllers
             return oferta / 12;
         }*/
 
+        private List<Cobertura> getLstCoberturarCasa(string plano)
+        {
+            if (plano == "A")
+            {
+                List<Cobertura> corbA = new List<Cobertura>(); 
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 1,80 ", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 1,80 ", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão - 1,80 ", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$1,44", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 3,60", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 5,40", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$1,26", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 0,90 ", id = 8 };
+                corbA.Add(Incendio);
+                corbA.Add(Raio);
+                corbA.Add(Explosao);
+                corbA.Add(Vendaval);
+                corbA.Add(Eletrico);
+                corbA.Add(Roubo);
+                corbA.Add(RCF);
+                corbA.Add(Aluguel);
+                return corbA;
+            }
+            if(plano == "B")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 2,27  ", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 2,27  ", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 2,27  ", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 1,82", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 4,54 ", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 6,81 ", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 1,59 ", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 1,13", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            if(plano == "C")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 2,86", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 2,86 ", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 2,86", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 2,29 ", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$  5,72 ", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 8,58 ", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 2,00", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 1,43", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            if (plano == "D")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 3,60", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 3,60", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 3,60", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 2,88", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 7,21", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 10,81", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 2,52", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 1,80", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            if (plano == "E")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 4,54", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 4,54", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 4,54", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 3,63", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 9,08", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 13,62", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 3,18", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 2,27", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            else return new List<Cobertura>();
+        }
+        private List<Cobertura> getLstCoberturarAPT(string plano)
+        {
+            if (plano == "A")
+            {
+                List<Cobertura> corbA = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 1,44", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 1,44", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão - R$ 1,44", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 1,15", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 2,88", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 4,32", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 1,01", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 0,72", id = 8 };
+                corbA.Add(Incendio);
+                corbA.Add(Raio);
+                corbA.Add(Explosao);
+                corbA.Add(Vendaval);
+                corbA.Add(Eletrico);
+                corbA.Add(Roubo);
+                corbA.Add(RCF);
+                corbA.Add(Aluguel);
+                return corbA;
+            }
+            if (plano == "B")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 1,82", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 1,82", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 1,82", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 1,45", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 3,63", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 5,45", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 1,27", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 0,91", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            if (plano == "C")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 2,29", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 2,29", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 2,29", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 1,83", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 4,58", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 6,86", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 1,60", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 1,14", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            if (plano == "D")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 2,88", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 2,88", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão -   R$ 2,88", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 2,31", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 5,77", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 8,65", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 2,02", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 1,44", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            if (plano == "E")
+            {
+                List<Cobertura> corbB = new List<Cobertura>();
+                Cobertura Incendio = new Cobertura { nome = "Incendio - R$ 3,63", id = 1 };
+                Cobertura Raio = new Cobertura { nome = "Queda de Raio - R$ 3,63", id = 2 };
+                Cobertura Explosao = new Cobertura { nome = "Explosão - R$ 3,63", id = 3 };
+                Cobertura Vendaval = new Cobertura { nome = "Vendaval, Furacão, Ciclone, Tornado e Granizo - R$ 2,91", id = 4 };
+                Cobertura Eletrico = new Cobertura { nome = "Danos Elétricos - R$ 7,26", id = 5 };
+                Cobertura Roubo = new Cobertura { nome = "Roubo de Bens - R$ 10,90", id = 6 };
+                Cobertura RCF = new Cobertura { nome = "Responsabilidade Civil Familiar - R$ 2,54", id = 7 };
+                Cobertura Aluguel = new Cobertura { nome = "Perda ou Pagamento de Aluguel - R$ 1,82", id = 8 };
+                corbB.Add(Incendio);
+                corbB.Add(Raio);
+                corbB.Add(Explosao);
+                corbB.Add(Vendaval);
+                corbB.Add(Eletrico);
+                corbB.Add(Roubo);
+                corbB.Add(RCF);
+                corbB.Add(Aluguel);
+                return corbB;
+            }
+            else return new List<Cobertura>();
+        }
 
         [HttpGet]
         public List<Produto> GetMensalidade(string tipo)
         {
             List<Produto> produtos = new List<Produto>();
+            
+
             if (tipo == "casa")
             {
+               
                 Produto oferta1 = new Produto()
                 {
                     id = 1,
                     ValorParcela = oferta1casa / 12,
-                    Valor = oferta1casa
+                    Valor = oferta1casa,
+                    cobertura = getLstCoberturarCasa("A")
+
                 };
                 Produto oferta2 = new Produto()
                 {
                     id = 2,
                     ValorParcela = oferta2casa / 12,
-                    Valor = oferta2casa
+                    Valor = oferta2casa,
+                    cobertura = getLstCoberturarCasa("B")
                 };
                 Produto oferta3 = new Produto()
                 {
                     id = 3,
                     ValorParcela = oferta3casa / 12,
-                    Valor = oferta3casa
+                    Valor = oferta3casa,
+                    cobertura = getLstCoberturarCasa("C")
                 };
                 Produto oferta4 = new Produto()
                 {
                     id = 4,
                     ValorParcela = oferta4casa / 12,
-                    Valor = oferta4casa
+                    Valor = oferta4casa,
+                    cobertura = getLstCoberturarCasa("D")
                 };
                 Produto oferta5 = new Produto()
                 {
                     id = 5,
                     ValorParcela = oferta5casa / 12,
-                    Valor = oferta5casa
+                    Valor = oferta5casa,
+                    cobertura = getLstCoberturarCasa("E")
                 };
 
                 produtos.Add(oferta1);
@@ -156,35 +374,41 @@ namespace Start.Controllers
             }
             else if (tipo == "apartamento")
             {
+
                 Produto oferta1 = new Produto()
                 {
                     id = 1,
                     ValorParcela = oferta1ap / 12,
-                    Valor = oferta1ap
+                    Valor = oferta1ap,
+                    cobertura = getLstCoberturarAPT("A")
                 };
                 Produto oferta2 = new Produto()
                 {
                     id = 2,
                     ValorParcela = oferta2ap / 12,
-                    Valor = oferta2ap
+                    Valor = oferta2ap,
+                    cobertura = getLstCoberturarAPT("B")
                 };
                 Produto oferta3 = new Produto()
                 {
                     id = 3,
                     ValorParcela = oferta3ap / 12,
-                    Valor = oferta3ap
+                    Valor = oferta3ap,
+                    cobertura = getLstCoberturarAPT("C")
                 };
                 Produto oferta4 = new Produto()
                 {
                     id = 4,
                     ValorParcela = oferta4ap / 12,
-                    Valor = oferta4ap
+                    Valor = oferta4ap,
+                    cobertura = getLstCoberturarAPT("D")
                 };
                 Produto oferta5 = new Produto()
                 {
                     id = 5,
                     ValorParcela = oferta5ap / 12,
-                    Valor = oferta5ap
+                    Valor = oferta5ap,
+                    cobertura = getLstCoberturarAPT("E")
                 };
 
                 produtos.Add(oferta1);
@@ -196,7 +420,7 @@ namespace Start.Controllers
             }
             return produtos;
         }
-        
+
         [HttpGet]
         public List<Produto> RetornList(string tipo, string ordem)
         {
